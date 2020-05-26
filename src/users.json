@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "name": "Pickle",
+      "lastName": "Rick",
+      "age": 65,
+      "sport": "Kill rats"
+    },
+    {
+      "id": 2,
+      "name": "Artur",
+      "lastName": "King",
+      "age": 23,
+      "sport": "Run"
+    },
+    {
+      "id": 3,
+      "name": "Bob",
+      "lastName": "Maley",
+      "age": 99,
+      "sport": "Soccer"
+    },
+    {
+      "id": 4,
+      "name": "Pink",
+      "lastName": "Panter",
+      "age": 45,
+      "sport": "Basket"
+    }
+  ]
