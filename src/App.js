@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import users from './users.json'
+import './App.css'
 
 //Components
 function App() {
   //Hook State
   const [subscribers, setSubscribers] = useState(users);
-  
+
   function sortFunction(prop) {
 
     function compare(a, b) {
@@ -19,16 +20,16 @@ function App() {
         comparison = -1;
       }
       return comparison;
-    }    
-    const arraySorted = subscribers.sort(compare);
+    }
+    const arraySorted = [...subscribers]  // copy of the state in order not to modify it directly by reference
 
-    setSubscribers([...arraySorted]);
+    setSubscribers(arraySorted.sort(compare));
   }
 
   return (
     <div className='App'>
       <div>
-        <table className='App-header'>
+        <table className='Table'>
           <thead>
             <tr>
               <th>Name</th>
@@ -38,20 +39,23 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {subscribers.map((subscriber, index) => 
-                <tr key={index}>
-                  <td>{subscriber.name}</td>
-                  <td>{subscriber.lastName}</td>
-                  <td>{subscriber.age}</td>
-                  <td>{subscriber.sport}</td>
-                </tr>
-              )}
+            {subscribers.map((subscriber, index) =>
+              <tr key={index}>
+                <td>{subscriber.name}</td>
+                <td>{subscriber.lastName}</td>
+                <td>{subscriber.age}</td>
+                <td>{subscriber.sport}</td>
+              </tr>
+            )}
+            <tr>
+              <td><button onClick={() => sortFunction('name')}>Sort by Name</button></td>
+              <td><button onClick={() => sortFunction('lastName')}>Sort by Last Name</button></td>
+              <td><button onClick={() => sortFunction('age')}>Sort by Age</button></td>
+              <td><button onClick={() => sortFunction('sport')}>Sort by Sport</button></td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <button onClick={() => sortFunction('name')}>Sort By Name</button>
-      <button onClick={() => sortFunction('age')}>Sort By Age</button>
-      <button onClick={() => sortFunction('sport')}>Sort By Sport</button>
     </div>
   );
 }
